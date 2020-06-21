@@ -37,7 +37,7 @@ def video_feed():
 def get_stream():
     image = request.files['image_data']
     print(image.filename)
-    image.save(os.path.join('/home/pi/gitServer/RESTful/static/images/' + image.filename))
+    image.save(os.path.join('C:/Users/marku/Desktop/Projekt X/git/RESTful/static/images/' + image.filename))
     return "image: succed" + image.filename
 
     print(request.files['image_data'])
@@ -45,8 +45,9 @@ def get_stream():
 @app.route('/')
 @app.route('/test_image')
 def test_image():
-    full_filename = os.path.join(app.config['UPLOAD_FOLDER'], 'test.jpg')
-    return render_template("test.html", user_image = full_filename)
+    while True:
+        full_filename = os.path.join(app.config['UPLOAD_FOLDER'], 'image.jpg')
+        return render_template("test.html", user_image = full_filename)
 
 if __name__ == '__main__':
     # defining server ip address and port
