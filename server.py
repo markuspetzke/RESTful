@@ -1,4 +1,4 @@
-from flask import FLASK, render_template, Response, request
+from flask import Flask, render_template, Response, request
 
 
 app = Flask(__name__)
@@ -33,3 +33,6 @@ def video_feed():
 def get_stream():
     print(request.files['image_data'])
 
+if __name__ == '__main__':
+    # defining server ip address and port
+    app.run(host='0.0.0.0',port='5000', debug=True)
