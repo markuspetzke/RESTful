@@ -1,11 +1,11 @@
 from flask import Flask, render_template, Response, request
-<<<<<<< HEAD
 import os
-=======
 
->>>>>>> 0d531d2d32b6d1d53ac36c43f35ce6251b991b6c
+IMAGE_FOLDER = os.path.join('static' , 'images')
 
 app = Flask(__name__)
+app.config['UPLOAD_FOLDER'] = IMAGE_FOLDER
+
 
 @app.route('/')
 def index():
@@ -35,14 +35,18 @@ def video_feed():
 
 @app.route('/get_stream', methods=['POST'])
 def get_stream():
-<<<<<<< HEAD
     image = request.files['image_data']
     print(image.filename)
-    image.save(os.path.join(app.root_path, 'images/' + image.filename))
+    image.save(os.path.join('/home/pi/gitServer/RESTful/static/images/' + image.filename))
     return "image: succed" + image.filename
-=======
+
     print(request.files['image_data'])
->>>>>>> 0d531d2d32b6d1d53ac36c43f35ce6251b991b6c
+
+@app.route('/')
+@app.route('/test_image')
+def test_image():
+    full_filename = os.path.join(app.config['UPLOAD_FOLDER'], 'test.jpg')
+    return render_template("test.html", user_image = full_filename)
 
 if __name__ == '__main__':
     # defining server ip address and port
