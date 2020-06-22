@@ -3,7 +3,7 @@ import cv2, os
 
 cam = cv2.VideoCapture(0)
 time.sleep(0.2)
-
+print("Thomas is cool")
 while True:
     ret, frame = cam.read()
     if not ret:
